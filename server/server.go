@@ -30,7 +30,7 @@ func StartServer(serverPort string, db dataservice.DatabaseHelper) {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", HomeHandler).Methods("GET", http.MethodOptions)
-	router.HandleFunc("/asset", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/asset/", func(w http.ResponseWriter, r *http.Request) {
 		routes.AssetHandler(w, r, userDB, assetDB, uploadDB)
 	}).Methods("POST", http.MethodOptions)
 	router.HandleFunc("/asset/{asset_id}", func(w http.ResponseWriter, r *http.Request) {
